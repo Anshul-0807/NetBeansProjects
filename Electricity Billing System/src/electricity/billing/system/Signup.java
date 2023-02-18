@@ -42,6 +42,56 @@ public class Signup extends JFrame {
         meter.setBounds(260, 90, 150, 20);
         panel.add(meter); 
         
+         JLabel lblusernamer = new JLabel("Username");
+        lblusernamer.setBounds(100, 130, 140, 20);
+        lblusernamer.setForeground(Color.GRAY);
+        lblusernamer.setFont(new Font("Tahoma", Font.BOLD, 14));
+        panel.add(lblusernamer);
+        
+        JTextField username = new JTextField();
+        username.setBounds(260, 130, 150, 20);
+        panel.add(username); 
+        
+        JLabel lblname = new JLabel("Name");
+        lblname.setBounds(100, 170, 140, 20);
+        lblname.setForeground(Color.GRAY);
+        lblname.setFont(new Font("Tahoma", Font.BOLD, 14));
+        panel.add(lblname);
+        
+        JTextField name = new JTextField();
+        name.setBounds(260, 170, 150, 20);
+        panel.add(name); 
+
+        JLabel lblpassword = new JLabel("Password");
+        lblpassword.setBounds(100, 210, 140, 20);
+        lblpassword.setForeground(Color.GRAY);
+        lblpassword.setFont(new Font("Tahoma", Font.BOLD, 14));
+        panel.add(lblpassword);
+        
+        JTextField password = new JTextField();
+        password.setBounds(260, 210, 150, 20);
+        panel.add(password); 
+        
+        JButton create = new JButton("Creata");
+         create.setBackground(Color.BLACK);
+         create.setForeground(Color.WHITE);
+        create.setBounds(140, 260, 120, 25);
+        panel.add(create); 
+        
+          JButton back = new JButton("Back");
+         back.setBackground(Color.BLACK);
+         back.setForeground(Color.WHITE);
+        back.setBounds(300, 260, 120, 25);
+        panel.add(back); 
+        
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/signupImage.png"));
+        Image i2 = i1.getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel image = new JLabel(i3);
+        image.setBounds(415, 30, 250, 250); 
+        panel.add(image);  
+        
+        
         setVisible(true);
     }
   public static void main(String[] args){
