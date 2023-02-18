@@ -20,12 +20,27 @@ public class Signup extends JFrame {
         panel.setForeground(new Color(34, 139, 34)); 
         add(panel);
         
-        JLabel heading = new JLabel("Create-Account");
+        JLabel heading = new JLabel("Create Account As");
         heading.setBounds(100, 50, 140, 20);
         heading.setForeground(Color.GRAY);
-        heading.setFont(new font("Tahoma", Font.BOLD, 14));
+        heading.setFont(new Font("Tahoma", Font.BOLD, 14));
         panel.add(heading);
+        
+        Choice accountType = new Choice();
+        accountType.add("Admin");
+        accountType.add("Customer");
+        accountType.setBounds(260, 50, 150, 20);
+        panel.add(accountType );
           
+        JLabel lblmeter = new JLabel("Meter Number");
+        lblmeter.setBounds(100, 90, 140, 20);
+        lblmeter.setForeground(Color.GRAY);
+        lblmeter.setFont(new Font("Tahoma", Font.BOLD, 14));
+        panel.add(lblmeter);
+        
+        JTextField meter = new JTextField();
+        meter.setBounds(260, 90, 150, 20);
+        panel.add(meter); 
         
         setVisible(true);
     }
