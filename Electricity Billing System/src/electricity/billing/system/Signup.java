@@ -3,9 +3,11 @@ package electricity.billing.system;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class Signup extends JFrame {
-    
+
+public class Signup extends JFrame  implements ActionListener{
+    JButton create, back;
     Signup(){
         
         setBounds(450, 150,700, 400);
@@ -72,16 +74,19 @@ public class Signup extends JFrame {
         password.setBounds(260, 210, 150, 20);
         panel.add(password); 
         
-        JButton create = new JButton("Creata");
-         create.setBackground(Color.BLACK);
-         create.setForeground(Color.WHITE);
+        create = new JButton("Create");
+        create.setBackground(Color.BLACK);
+        create.setForeground(Color.WHITE);
         create.setBounds(140, 260, 120, 25);
+        create.addActionListener(this);
         panel.add(create); 
         
-          JButton back = new JButton("Back");
-         back.setBackground(Color.BLACK);
-         back.setForeground(Color.WHITE);
+        back = new JButton("Back");
+        back.setBackground(Color.BLACK);
+        back.setForeground(Color.WHITE);
         back.setBounds(300, 260, 120, 25);
+        back.addActionListener(this);
+
         panel.add(back); 
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/signupImage.png"));
@@ -94,6 +99,17 @@ public class Signup extends JFrame {
         
         setVisible(true);
     }
+    
+    public void actionPerformed(ActionEvent ae){
+    if(ae.getSource() == create){
+        
+    }else if (ae.getSource() == back ){
+            setVisible(false);
+            
+            new Login();
+        }
+    }
+    
   public static void main(String[] args){
    new Signup();
    }    
