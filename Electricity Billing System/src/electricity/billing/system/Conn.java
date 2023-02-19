@@ -5,8 +5,13 @@ import java.sql.*;
 public class Conn {
    
     Connection c;
-    
+    Statement s;
     Conn(){
-     c =   DriverManager.getConnection("jdbc:mysql://localhost:3306/");
+        try{
+     c =   DriverManager.getConnection("jdbc:mysql:///ebs", "root", "Anshul_123");
+     s =   c.createStatement();
+    }catch(Exception e){
+        e.printStackTrace();
+    }
     }
 }
