@@ -1,2 +1,2 @@
 # Electricity-biling-system
-java project
+java-project
