@@ -101,12 +101,79 @@ public class Project extends JFrame{
         JMenuItem paybill = new JMenuItem(" Pay Bill ");
         paybill.setFont(new Font("monospaced", Font.PLAIN, 12));
         paybill.setBackground(Color.WHITE);
-        ImageIcon icon7 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon6.png")));
+        ImageIcon icon7 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon4.png")));
         Image image7 = icon7.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         paybill.setIcon(new ImageIcon(image7));
-        paybill.setMnemonic('L');
-        paybill.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_L, ActionEvent.CTRL_MASK ));
+        paybill.setMnemonic('R');
+        paybill.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_R, ActionEvent.CTRL_MASK ));
         user.add(paybill);
+        
+        JMenuItem billdetail = new JMenuItem(" Bill  Details ");
+        billdetail.setFont(new Font("monospaced", Font.PLAIN, 12));
+        billdetail.setBackground(Color.WHITE);
+        ImageIcon icon8 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon6.png")));
+        Image image8 = icon8.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+        billdetail.setIcon(new ImageIcon(image8));
+        billdetail.setMnemonic('B');
+        billdetail.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_B, ActionEvent.CTRL_MASK ));
+        user.add(billdetail);
+        
+        
+         JMenu report = new JMenu("Report");
+        report.setForeground(Color.RED);
+        mb.add(report);
+        
+        JMenuItem generatebill = new JMenuItem(" Generate Bill ");
+        generatebill.setFont(new Font("monospaced", Font.PLAIN, 12));
+        generatebill.setBackground(Color.WHITE);
+        ImageIcon icon9 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon7.png")));
+        Image image9 = icon9.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+        generatebill.setIcon(new ImageIcon(image9));
+        generatebill.setMnemonic('G');
+        generatebill.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_G, ActionEvent.CTRL_MASK ));
+        report.add(generatebill);
+        
+        
+          JMenu utility = new JMenu("Utility");
+        utility.setForeground(Color.BLUE);
+        mb.add(utility);
+        
+        JMenuItem notepad = new JMenuItem(" Notepad ");
+        notepad.setFont(new Font("monospaced", Font.PLAIN, 12));
+        notepad.setBackground(Color.WHITE);
+        ImageIcon icon10 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon12.png")));
+        Image image10 = icon10.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+        notepad.setIcon(new ImageIcon(image10));
+        notepad.setMnemonic('N');
+        notepad.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_N, ActionEvent.CTRL_MASK ));
+        utility.add(notepad);
+        
+        
+         JMenuItem calculator = new JMenuItem(" Calculator ");
+        calculator.setFont(new Font("monospaced", Font.PLAIN, 12));
+        calculator.setBackground(Color.WHITE);
+        ImageIcon icon11 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon9.png")));
+        Image image11 = icon11.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+        calculator.setIcon(new ImageIcon(image11));
+        calculator.setMnemonic('C');
+        calculator.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_C, ActionEvent.CTRL_MASK ));
+        utility.add(calculator);
+        
+        
+        JMenu mexit = new JMenu("Exit");
+        mexit.setForeground(Color.RED);
+        mb.add(mexit);
+        
+        JMenuItem exit = new JMenuItem(" Exit ");
+        exit.setFont(new Font("monospaced", Font.PLAIN, 12));
+        exit.setBackground(Color.WHITE);
+        ImageIcon icon12 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon11.png")));
+        Image image12 = icon12.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+        exit.setIcon(new ImageIcon(image12));
+        exit.setMnemonic('W');
+        exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_W, ActionEvent.CTRL_MASK ));
+        mexit.add(exit);
+        
         
         
         
