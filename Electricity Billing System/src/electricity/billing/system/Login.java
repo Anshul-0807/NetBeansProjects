@@ -3,10 +3,14 @@ package electricity.billing.system;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.sql.*;
+        
 
 public class Login extends JFrame implements ActionListener{
     JButton login, cancel, signup;
-    
+    JTextField username, Password;
+     Choice  logginin;
+     
     Login(){
         super("Login page");
         getContentPane().setBackground(Color.WHITE);
@@ -16,7 +20,7 @@ public class Login extends JFrame implements ActionListener{
         lblusername.setBounds(300, 20, 100, 20);
         add(lblusername);
         
-        JTextField username = new JTextField();
+        username = new JTextField();
         username.setBounds(400, 20, 150, 20);
         add(username);
         
@@ -24,7 +28,7 @@ public class Login extends JFrame implements ActionListener{
         lblpassword.setBounds(300, 60, 100, 20);
         add(lblpassword);
         
-        JTextField Password  = new JTextField();
+        Password  = new JTextField();
         Password.setBounds(400, 60, 150, 20);
         add(Password);
         
@@ -32,7 +36,7 @@ public class Login extends JFrame implements ActionListener{
         loggininas.setBounds(300, 100, 100, 20);
         add(loggininas);
         
-        Choice  logginin = new Choice();
+        logginin = new Choice();
         logginin.add("Admin");
         logginin.add("Customer");
         logginin.setBounds(400, 100, 150, 20);
@@ -74,6 +78,27 @@ public class Login extends JFrame implements ActionListener{
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == login){
+            String susername = username.getText();
+            String spassword = Password.getText();
+            String user = logginin.getSelectedItem();
+            
+            try{
+               Conn c = new Conn();
+                String query = "select * from login where username = '"+susername+"' and password = '"+spassword+"' and user = '"+user+"'";
+                
+                ResultSet rs = c.s.executeQuery(query);
+                
+                if(rs.next()){
+                    setVisible(false);
+                    new Project();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Invalid Login");
+                }
+                
+                
+            } catch (Exception e){
+                e.printStackTrace();
+            }
             
         }else if (ae.getSource() == cancel){
             setVisible(false);
