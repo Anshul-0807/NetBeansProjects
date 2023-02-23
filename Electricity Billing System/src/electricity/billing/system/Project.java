@@ -161,7 +161,7 @@ public class Project extends JFrame{
         
         
         JMenu mexit = new JMenu("Exit");
-        mexit.setForeground(Color.RED);
+        mexit.setForeground(Color.RED );
         mb.add(mexit);
         
         JMenuItem exit = new JMenuItem(" Exit ");
