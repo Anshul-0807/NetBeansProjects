@@ -8,7 +8,7 @@ import java.sql.*;
 
 public class Login extends JFrame implements ActionListener{
     JButton login, cancel, signup;
-    JTextField username, Password;
+    JTextField username, password;
      Choice  logginin;
      
     Login(){
@@ -28,9 +28,9 @@ public class Login extends JFrame implements ActionListener{
         lblpassword.setBounds(300, 60, 100, 20);
         add(lblpassword);
         
-        Password  = new JTextField();
-        Password.setBounds(400, 60, 150, 20);
-        add(Password);
+        password  = new JTextField();
+        password.setBounds(400, 60, 150, 20);
+        add(password);
         
         JLabel loggininas = new JLabel("Loggin in as");
         loggininas.setBounds(300, 100, 100, 20);
@@ -79,7 +79,7 @@ public class Login extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == login){
             String susername = username.getText();
-            String spassword = Password.getText();
+            String spassword = password.getText();
             String user = logginin.getSelectedItem();
             
             try{
@@ -93,6 +93,8 @@ public class Login extends JFrame implements ActionListener{
                     new Project();
                 }else{
                     JOptionPane.showMessageDialog(null, "Invalid Login");
+                    username.setText("");
+                    password.setText("");
                 }
                 
                 
