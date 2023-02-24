@@ -149,7 +149,7 @@ public class Project extends JFrame{
         utility.add(notepad);
         
         
-         JMenuItem calculator = new JMenuItem(" Calculator ");
+        JMenuItem calculator = new JMenuItem(" Calculator ");
         calculator.setFont(new Font("monospaced", Font.PLAIN, 12));
         calculator.setBackground(Color.WHITE);
         ImageIcon icon11 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon9.png")));
