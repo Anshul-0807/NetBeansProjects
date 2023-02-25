@@ -10,6 +10,7 @@ public class NewCustomer extends JFrame implements ActionListener{
     
     JTextField tfname, tfaddress, tfstate, tfcity, tfemail, tfphone ;
     JButton next, cancel;
+    JLabel lblmeter;
     NewCustomer(){
         setSize(700, 500);
         setLocation(400, 200);
@@ -36,7 +37,7 @@ public class NewCustomer extends JFrame implements ActionListener{
         lblmeterno.setBounds(100, 120, 100, 20);
         p.add(lblmeterno);
         
-        JLabel lblmeter = new JLabel("Meter Number ");
+        lblmeter = new JLabel("Meter Number ");
         lblmeter.setBounds(240, 120, 100, 20);
         p.add(lblmeter);
         
@@ -120,7 +121,13 @@ public class NewCustomer extends JFrame implements ActionListener{
     
      public void actionPerformed(ActionEvent ae){
             if (ae.getSource() == next){
-                
+                String name = tfname.getText();
+                String meter = lblmeter.getText();
+                String address = tfaddress.getText();
+                String city = tfcity.getText();
+                String state = tfstate.getText();
+                String email = tfemail.getText();
+                String phone = tfphone.getText();
             }else{
                 setVisible(false); 
             }
