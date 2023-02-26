@@ -150,9 +150,6 @@ public class NewCustomer extends JFrame implements ActionListener{
                  
                  
                  
-                 
-                 
-                 
             }else{
                 setVisible(false); 
             }
