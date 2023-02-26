@@ -6,8 +6,6 @@ import java.awt.event.*;
 
 
 
-
-
 public class Project extends JFrame{
     Project(){
         setExtendedState(JFrame.MAXIMIZED_BOTH);
