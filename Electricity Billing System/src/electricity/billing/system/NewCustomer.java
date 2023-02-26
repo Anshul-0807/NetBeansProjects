@@ -129,14 +129,13 @@ public class NewCustomer extends JFrame implements ActionListener{
                 String email = tfemail.getText();
                 String phone = tfphone.getText();
                 
-                String query1 = " insert into customer values(('"+name+"', '"+meter+"', '"+address+"', '"+city+"', '"+state+"', '"+email+"', '"+phone+"' ))";
-                String query2 = "insert into login values('"+meter+"','', '"+name+"','', '' )";
-                
-                 
-                 try{
-                     Conn c = new Conn();
-                     c.s.executeUpdate(query1);
-                     c.s.executeUpdate(query2);
+            String query1 = "insert into customer values('"+name+"', '"+meter+"', '"+address+"', '"+city+"', '"+state+"', '"+email+"', '"+phone+"')";
+            String query2 = "insert into login values('"+meter+"', '', '"+name+"', '', '')";
+            
+            try {
+                Conn c = new Conn();
+                c.s.executeUpdate(query1);
+                c.s.executeUpdate(query2);
 
                     JOptionPane.showMessageDialog(null, "Customer Detail Added Successfully");
                     setVisible(false);
