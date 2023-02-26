@@ -151,8 +151,7 @@ public class MeterInfo extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Meter Information Added Successfully");
                     setVisible(false);
                      
-                     
-                     
+                    
                      
                  } catch (Exception e){
                       e.printStackTrace();
