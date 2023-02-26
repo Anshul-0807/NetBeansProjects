@@ -73,8 +73,7 @@ public class Login extends JFrame implements ActionListener{
         setSize(640, 300);
         setLocation(400, 200);
         setVisible(true);
-        
-    } 
+        } 
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == login){
