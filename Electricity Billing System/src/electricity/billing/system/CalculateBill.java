@@ -9,14 +9,14 @@ import java.sql.*;
 
 public class CalculateBill extends JFrame implements ActionListener{
     
-    JTextField tfname, tfaddress, tfstate, tfcity, tfemail, tfphone ;
+    JTextField tfname, tfaddress, tfstate, tfunits, tfemail, tfphone ;
     JButton next, cancel;
-    JLabel lblname;
-    Choice meternumber;
+    JLabel lblname, labeladdress;
+    Choice meternumber, cmonth;
     
     CalculateBill(){
         setSize(700, 500);
-        setLocation(400, 200);
+        setLocation(400, 150);
         
         JPanel p = new JPanel();
         p.setLayout(null);
@@ -61,52 +61,81 @@ public class CalculateBill extends JFrame implements ActionListener{
         lbladdress.setBounds(100, 160, 100, 20);
         p.add(lbladdress);
         
-        tfaddress = new JTextField();
-        tfaddress.setBounds(240, 160, 200, 20);
-        p.add(tfaddress);
+        labeladdress = new JLabel();
+        labeladdress.setBounds(240, 160, 200, 20);
+        p.add(labeladdress);
+        
+        
+        try{
+             Conn c = new Conn();
+            ResultSet rs =  c.s.executeQuery("select * from customer where meter_no = '"+meternumber.getSelectedItem()+"'  ");
+            while(rs.next()){
+                lblname.setText(rs.getString("name"));
+                labeladdress.setText(rs.getString("address"));
+
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+            
+        }
+        
+        meternumber.addItemListener(new ItemListener(){
+            public void itemStateChanged(ItemEvent ie){
+                try{
+             Conn c = new Conn();
+            ResultSet rs =  c.s.executeQuery("select * from customer where meter_no = '"+meternumber.getSelectedItem()+"'  ");
+            while(rs.next()){
+                lblname.setText(rs.getString("name"));
+                labeladdress.setText(rs.getString("address"));
+
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+            
+        }
+            }
+        });
         
         JLabel lblcity = new JLabel("Units Consumed");
         lblcity.setBounds(100, 200, 100, 20);
         p.add(lblcity);
         
-        tfcity = new JTextField();
-        tfcity.setBounds(240, 200, 200, 20);
-        p.add(tfcity);
+        tfunits = new JTextField();
+        tfunits.setBounds(240, 200, 200, 20);
+        p.add(tfunits);
         
         JLabel lblstate = new JLabel("Month");
         lblstate.setBounds(100, 240, 100, 20);
         p.add(lblstate);
         
-        tfstate = new JTextField();
-        tfstate.setBounds(240, 240, 200, 20);
-        p.add(tfstate);
+        cmonth = new Choice();
+        cmonth.setBounds(240, 240, 200, 20);
+        cmonth.add("Janaury");
+        cmonth.add("February");
+        cmonth.add("March");
+        cmonth.add("April");
+        cmonth.add("May");
+        cmonth.add("June");
+        cmonth.add("July");
+        cmonth.add("August");
+        cmonth.add("September");
+        cmonth.add("October");
+        cmonth.add("November");
+        cmonth.add("December");
+        p.add(cmonth);
         
         
-        JLabel lblemail = new JLabel("Email");
-        lblemail.setBounds(100, 280, 100, 20);
-        p.add(lblemail);
+      
         
-        tfemail = new JTextField();
-        tfemail.setBounds(240, 280, 200, 20);
-        p.add(tfemail);
-        
-        JLabel lblphone = new JLabel("Phone Number");
-        lblphone.setBounds(100, 320, 100, 20);
-        p.add(lblphone);
-        
-        tfphone = new JTextField();
-        tfphone.setBounds(240, 320, 200, 20);
-        p.add(tfphone);
-        
-        next = new JButton("Next");
-        next.setBounds(120, 390, 100, 25);
+        next = new JButton("Submit");
+        next.setBounds(120, 350, 100, 25);
         next.setBackground(Color.BLACK);
         next.setForeground(Color.WHITE);
         next.addActionListener(this);
         p.add(next);
         
         cancel = new JButton("Cancel");
-        cancel.setBounds(250, 390, 100, 25);
+        cancel.setBounds(250, 350, 100, 25);
         cancel.setBackground(Color.BLACK);
         cancel.setForeground(Color.WHITE);
         cancel.addActionListener(this);
@@ -117,7 +146,7 @@ public class CalculateBill extends JFrame implements ActionListener{
         
         add(p, "Center");
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/hicon1.jpg"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/hicon2.jpg"));
         Image i2 = i1.getImage().getScaledInstance(150, 300, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
@@ -133,21 +162,18 @@ public class CalculateBill extends JFrame implements ActionListener{
     
      public void actionPerformed(ActionEvent ae){
             if (ae.getSource() == next){
-                String name = tfname.getText();
-                String meter = lblmeter.getText();
-                String address = tfaddress.getText();
-                String city = tfcity.getText();
-                String state = tfstate.getText();
-                String email = tfemail.getText();
-                String phone = tfphone.getText();
+               
+                String meter = meternumber.getSelectedItem();
+                String units = tfunits.getText();
+                String month = cmonth.getSelectedItem();
+               
+                int totalbill = 0;
                 
-            String query1 = "insert into customer values('"+name+"', '"+meter+"', '"+address+"', '"+city+"', '"+state+"', '"+email+"', '"+phone+"')";
-            String query2 = "insert into login values('"+meter+"', '', '"+name+"', '', '')";
+            String query = "select * from tax";
             
             try {
                 Conn c = new Conn();
-                c.s.executeUpdate(query1);
-                c.s.executeUpdate(query2);
+                ResultSet rs =  c.s.executeQuery(query);
 
                     JOptionPane.showMessageDialog(null, "Customer Detail Added Successfully");
                     setVisible(false);
