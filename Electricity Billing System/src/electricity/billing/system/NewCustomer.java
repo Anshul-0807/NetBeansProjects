@@ -142,7 +142,7 @@ public class NewCustomer extends JFrame implements ActionListener{
                      
                      // new frame
                      
-                     
+                     new MeterInfo(meter);
                      
                  } catch (Exception e){
                       e.printStackTrace();
