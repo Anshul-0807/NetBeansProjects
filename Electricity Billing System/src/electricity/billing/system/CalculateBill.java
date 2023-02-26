@@ -168,6 +168,7 @@ public class CalculateBill extends JFrame implements ActionListener{
                 String month = cmonth.getSelectedItem();
                
                 int totalbill = 0;
+                int unit_consumed = Integer.parseInt(units);
                 
             String query = "select * from tax";
             
@@ -175,6 +176,11 @@ public class CalculateBill extends JFrame implements ActionListener{
                 Conn c = new Conn();
                 ResultSet rs =  c.s.executeQuery(query);
 
+                while(rs.next()){
+                  totalbill +=  unit_consumed * Integer.parseInt(rs.getString("cost_per_unit"));
+                  totalbill +=  Integer.parseInt(rs.getString("meter_rent"));
+                }
+                
                     JOptionPane.showMessageDialog(null, "Customer Detail Added Successfully");
                     setVisible(false);
                      
