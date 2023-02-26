@@ -109,8 +109,7 @@ public class Signup extends JFrame  implements ActionListener{
         String sname = name.getText();
         String spassword = password.getText();
         String smeter = meter.getText();
-        
-        
+         
         try{
             Conn c = new Conn();
             String query = "insert into login values('"+smeter+"', '"+susername+"', '"+sname+"', '"+spassword+"', '"+atype+"' )";
