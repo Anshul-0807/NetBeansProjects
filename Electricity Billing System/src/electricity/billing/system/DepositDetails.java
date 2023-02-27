@@ -97,7 +97,14 @@ public class DepositDetails extends JFrame implements ActionListener{
     
          public void actionPerformed(ActionEvent ae){
              if(ae.getSource() == search){
-                 
+                 String query  ="select * from bill where meter_no = '"+meternumber.getSelectedItem()+"' and month = '"+cmonth.getSelectedItem()+"' ";
+                 try{
+                     Conn c = new Conn();
+                     ResultSet rs = c.s.executeQuery(query);
+                     table.setModel(DbUtils.resultSetToTableModel(rs));
+                 } catch (Exception e){
+                     
+                 }
              }else{
                  try{
                     table.print();
