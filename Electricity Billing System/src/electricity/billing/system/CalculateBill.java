@@ -190,7 +190,7 @@ public class CalculateBill extends JFrame implements ActionListener{
                       e.printStackTrace();
                  }
                  
-             String query2 = "insert into bill values('"+meter+"', '"+units+"', '"+month+"', '"+totalbill+"')" ; 
+             String query2 = "insert into bill values('"+meter+"', '"+units+"', '"+month+"', '"+totalbill+"', 'Not Paid')" ; 
                  
               try {
                 Conn c = new Conn();
