@@ -179,21 +179,34 @@ public class CalculateBill extends JFrame implements ActionListener{
                 while(rs.next()){
                   totalbill +=  unit_consumed * Integer.parseInt(rs.getString("cost_per_unit"));
                   totalbill +=  Integer.parseInt(rs.getString("meter_rent"));
+                  totalbill +=  Integer.parseInt(rs.getString("service_charge"));
+                  totalbill +=  Integer.parseInt(rs.getString("service_tax"));
+                  totalbill +=  Integer.parseInt(rs.getString("swacch_bharat_cess"));
+                  totalbill +=  Integer.parseInt(rs.getString("fixed_tax"));
+
                 }
-                
-                    JOptionPane.showMessageDialog(null, "Customer Detail Added Successfully");
-                    setVisible(false);
-                     
-                     // new frame
-                     
-                     new MeterInfo(meter);
-                     
+               
                  } catch (Exception e){
                       e.printStackTrace();
                  }
                  
+             String query2 = "insert into bill values('"+meter+"', '"+units+"', '"+month+"', '"+totalbill+"')" ; 
                  
-                 
+              try {
+                Conn c = new Conn();
+                c.s.executeUpdate(query2);
+               
+
+                    JOptionPane.showMessageDialog(null, "Customer Bill Update Successfully"); 
+                    setVisible(false);
+                     
+                    
+                     
+                 } catch (Exception e){
+                      e.printStackTrace();
+                 }
+             
+             
             }else{
                 setVisible(false); 
             }
