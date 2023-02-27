@@ -23,7 +23,7 @@ public class Project extends JFrame implements ActionListener{
         master.setForeground(Color.BLUE);
         mb.add(master);
         
-        JMenuItem newcustomer = new JMenuItem("new Customer");
+        JMenuItem newcustomer = new JMenuItem("New Customer");
         newcustomer.setFont(new Font("monospaced", Font.PLAIN, 12));
         newcustomer.setBackground(Color.WHITE);
         ImageIcon icon1 = new ImageIcon(ClassLoader.getSystemResource(("icon/icon1.png")));
@@ -54,6 +54,7 @@ public class Project extends JFrame implements ActionListener{
         Image image3 = icon3.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         depositdetails.setIcon(new ImageIcon(image3));
         depositdetails.setMnemonic('N');
+        depositdetails.addActionListener(this);        
         depositdetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_N, ActionEvent.CTRL_MASK ));
         master.add(depositdetails);
         
@@ -65,6 +66,7 @@ public class Project extends JFrame implements ActionListener{
         Image image4 = icon4.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         calculatebill.setIcon(new ImageIcon(image4));
         calculatebill.setMnemonic('B');
+        calculatebill.addActionListener(this);                
         calculatebill.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_B, ActionEvent.CTRL_MASK ));
         master.add(calculatebill);
         
@@ -182,6 +184,19 @@ public class Project extends JFrame implements ActionListener{
         
        setVisible(true);
 
+    }
+    
+    public void actionPerformed(ActionEvent ae){
+        String msg = ae.getActionCommand();
+        if(msg.equals("New Customer")){
+            new NewCustomer();
+        } else if(msg.equals("Customer Details")){
+            
+        } else if(msg.equals("Deposit Details")){
+            
+        } else if(msg.equals("Calculate Bill")){
+            new CalculateBill();
+        }
     }
     
     public static void main(String[] args){
