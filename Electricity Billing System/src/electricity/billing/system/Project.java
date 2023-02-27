@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 
 
-public class Project extends JFrame{
+public class Project extends JFrame implements ActionListener{
     Project(){
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         
@@ -30,6 +30,7 @@ public class Project extends JFrame{
         Image image1 = icon1.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         newcustomer.setIcon(new ImageIcon(image1));
         newcustomer.setMnemonic('D');
+        newcustomer.addActionListener(this);
         newcustomer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_D, ActionEvent.CTRL_MASK ));
         master.add(newcustomer);
         
@@ -41,6 +42,7 @@ public class Project extends JFrame{
         Image image2 = icon2.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         customerdetails.setIcon(new ImageIcon(image2));
         customerdetails.setMnemonic('M');
+        customerdetails.addActionListener(this);
         customerdetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_M, ActionEvent.CTRL_MASK ));
         master.add(customerdetails);
         
