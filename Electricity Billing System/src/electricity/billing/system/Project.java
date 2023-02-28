@@ -7,8 +7,8 @@ import java.awt.event.*;
 
 
 public class Project extends JFrame implements ActionListener{
-    String atype, meter;
-    Project(String atype, String meter){
+   String atype, meter;
+    Project(String atype, String meter) {
         this.atype = atype;
         this.meter = meter;
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -209,9 +209,10 @@ public class Project extends JFrame implements ActionListener{
             new DepositDetails();
         } else if(msg.equals("Calculate Bill")){
             new CalculateBill();
-        }else if( msg.equals("View Information")) {
+        }else if (msg.equals("View Information")) {
             new ViewInformation(meter);
         }
+        
     }
     
     public static void main(String[] args){
