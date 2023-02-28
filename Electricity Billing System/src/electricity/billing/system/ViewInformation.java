@@ -118,6 +118,7 @@ public class ViewInformation extends JFrame implements ActionListener{
         setVisible(false);
     }
     
+    
     public static void main(String[] args){
         new ViewInformation("");
     }
