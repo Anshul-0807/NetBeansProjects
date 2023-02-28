@@ -7,7 +7,10 @@ import java.awt.event.*;
 
 
 public class Project extends JFrame implements ActionListener{
-    Project(){
+    String atype, meter;
+    Project(String atype, String meter){
+        this.atype = atype;
+        this.meter = meter;
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource(("icon/elect1.jpg")));
@@ -21,7 +24,7 @@ public class Project extends JFrame implements ActionListener{
         
         JMenu master = new JMenu("Master");
         master.setForeground(Color.BLUE);
-        mb.add(master);
+        
         
         JMenuItem newcustomer = new JMenuItem("New Customer");
         newcustomer.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -73,7 +76,7 @@ public class Project extends JFrame implements ActionListener{
          
         JMenu info = new JMenu("Information");
         info.setForeground(Color.RED);
-        mb.add(info);
+        
         
         JMenuItem updateinformation = new JMenuItem(" Update Information");
         updateinformation.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -93,12 +96,13 @@ public class Project extends JFrame implements ActionListener{
         Image image6 = icon6.getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT);
         viewinformation.setIcon(new ImageIcon(image6));
         viewinformation.setMnemonic('L');
+        viewinformation.addActionListener(this);
         viewinformation.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_L, ActionEvent.CTRL_MASK ));
         info.add(viewinformation);
         
          JMenu user = new JMenu("User");
         user.setForeground(Color.BLUE);
-        mb.add(user);
+        
         
         JMenuItem paybill = new JMenuItem(" Pay Bill ");
         paybill.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -123,7 +127,7 @@ public class Project extends JFrame implements ActionListener{
         
          JMenu report = new JMenu("Report");
         report.setForeground(Color.RED);
-        mb.add(report);
+       
         
         JMenuItem generatebill = new JMenuItem(" Generate Bill ");
         generatebill.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -138,7 +142,7 @@ public class Project extends JFrame implements ActionListener{
         
           JMenu utility = new JMenu("Utility");
         utility.setForeground(Color.BLUE);
-        mb.add(utility);
+        
         
         JMenuItem notepad = new JMenuItem(" Notepad ");
         notepad.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -164,7 +168,7 @@ public class Project extends JFrame implements ActionListener{
         
         JMenu mexit = new JMenu("Exit");
         mexit.setForeground(Color.RED );
-        mb.add(mexit);
+       
         
         JMenuItem exit = new JMenuItem(" Exit ");
         exit.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -176,10 +180,19 @@ public class Project extends JFrame implements ActionListener{
         exit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent .VK_W, ActionEvent.CTRL_MASK ));
         mexit.add(exit);
         
-        
-        
-        
-        
+       if(atype.equals("Admin")) {
+        mb.add(master);
+       } else{
+         mb.add(info);
+         mb.add(report);
+         mb.add(user);
+       }
+          
+         mb.add(utility);
+         mb.add(mexit); 
+         
+         
+         
         setLayout(new FlowLayout());
         
        setVisible(true);
@@ -196,11 +209,13 @@ public class Project extends JFrame implements ActionListener{
             new DepositDetails();
         } else if(msg.equals("Calculate Bill")){
             new CalculateBill();
+        }else if( msg.equals("View Information")) {
+            new ViewInformation(meter);
         }
     }
     
     public static void main(String[] args){
-       new Project();
+       new Project("", "");
     }
             
 }
