@@ -100,6 +100,7 @@ public class Project extends JFrame implements ActionListener{
         user.setForeground(Color.BLUE);
         
         
+        
         JMenuItem paybill = new JMenuItem("Pay Bill");
         paybill.setFont(new Font("monospaced", Font.PLAIN, 12));
         paybill.setBackground(Color.WHITE);
@@ -110,6 +111,7 @@ public class Project extends JFrame implements ActionListener{
         paybill.addActionListener(this);
         paybill.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
         user.add(paybill);
+        
         
         JMenuItem billdetails = new JMenuItem("Bill Details");
         billdetails.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -230,6 +232,8 @@ public class Project extends JFrame implements ActionListener{
         }  else if (msg.equals("Exit")) {
            setVisible(false);
            new Login();
+        } else if (msg.equals("Pay Bill")) {
+            new PayBill(meter); 
         }
     }
     
