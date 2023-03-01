@@ -10,7 +10,7 @@ public class BillDetails extends JFrame {
     BillDetails(String meter){
         
      setSize(700, 650);
-     setLocation(400, 150);
+     setLocation(350, 20);
      
      
      getContentPane().setBackground(Color.WHITE);
