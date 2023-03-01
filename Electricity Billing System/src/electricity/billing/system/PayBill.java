@@ -68,33 +68,30 @@ public class PayBill extends JFrame implements ActionListener{
         lblunits.setBounds(35, 260, 200, 20);
         add(lblunits);
         
-        
         JLabel labelunits = new JLabel("");
         labelunits.setBounds(300, 260, 200, 20);
-        add(labelunits); 
+        add(labelunits);
         
-              
-         JLabel lbltotalbill = new JLabel("Total Bill");
+        JLabel lbltotalbill = new JLabel("Total Bill");
         lbltotalbill.setBounds(35, 320, 200, 20);
         add(lbltotalbill);
         
-        
         JLabel labeltotalbill = new JLabel("");
         labeltotalbill.setBounds(300, 320, 200, 20);
-        add(labeltotalbill); 
+        add(labeltotalbill);
         
-        
-           JLabel lblstatus= new JLabel("Status");
+        JLabel lblstatus = new JLabel("Status");
         lblstatus.setBounds(35, 380, 200, 20);
         add(lblstatus);
-        
         
         JLabel labelstatus = new JLabel("");
         labelstatus.setBounds(300, 380, 200, 20);
         labelstatus.setForeground(Color.RED);
-        add(labelstatus); 
+        add(labelstatus);
         
-        try{
+        
+        
+        try {
             Conn c = new Conn();
             ResultSet rs = c.s.executeQuery("select * from customer where meter_no = '"+meter+"'");
             while(rs.next()) {
@@ -102,12 +99,11 @@ public class PayBill extends JFrame implements ActionListener{
                 labelname.setText(rs.getString("name"));
             }
             
-                rs = c.s.executeQuery("select * from bill where meter_no = '"+meter+"' AND month = 'Janaury'   ");
+            rs = c.s.executeQuery("select * from bill where meter_no = '"+meter+"' AND month = 'January'");
             while(rs.next()) {
                 labelunits.setText(rs.getString("units"));
                 labeltotalbill.setText(rs.getString("totalbill"));
                 labelstatus.setText(rs.getString("status"));
-                
             }
             
             
@@ -123,11 +119,11 @@ public class PayBill extends JFrame implements ActionListener{
             Conn c = new Conn();
          
             
-             ResultSet rs = c.s.executeQuery("select * from bill where meter_no = '"+meter+"' AND month = '"+cmonth.getSelectedItem()+"'   ");
-            while(rs.next()) {
-                labelunits.setText(rs.getString("units"));
-                labeltotalbill.setText(rs.getString("totalbill"));
-                labelstatus.setText(rs.getString("status"));
+            ResultSet rs = c.s.executeQuery("select * from bill where meter_no = '"+meter+"' AND month = '"+cmonth.getSelectedItem()+"'");
+                    while(rs.next()) {
+                        labelunits.setText(rs.getString("units"));
+                        labeltotalbill.setText(rs.getString("totalbill"));
+                        labelstatus.setText(rs.getString("status"));
                 
             }
             
@@ -168,9 +164,9 @@ public class PayBill extends JFrame implements ActionListener{
     }
     
     
-    public void actionPerformed(ActionEvent ae){
-        if(ae.getSource() == pay){
-            try{
+      public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == pay) {
+            try {
                 Conn c = new Conn();
                 c.s.executeUpdate("update bill set status = 'Paid' where meter_no = '"+meter+"' AND month='"+cmonth.getSelectedItem()+"'");
             } catch (Exception e) {
@@ -178,13 +174,12 @@ public class PayBill extends JFrame implements ActionListener{
             }
             setVisible(false);
             new Paytm(meter);
-        }else {
+        } else {
             setVisible(false);
         }
     }
-    
+
     public static void main(String[] args){
         new PayBill("");
     }
-    
 }
