@@ -113,7 +113,7 @@ public class Project extends JFrame implements ActionListener{
         user.add(paybill);
         
         
-        JMenuItem billdetails = new JMenuItem("Bill Details");
+       JMenuItem billdetails = new JMenuItem("Bill Details");
         billdetails.setFont(new Font("monospaced", Font.PLAIN, 12));
         billdetails.setBackground(Color.WHITE);
         ImageIcon icon8 = new ImageIcon(ClassLoader.getSystemResource("icon/icon6.png"));
@@ -215,8 +215,8 @@ public class Project extends JFrame implements ActionListener{
             new ViewInformation(meter);
         } else if (msg.equals("Update Information")) {
             new UpdateInformation(meter);
-        }  else if (msg.equals("Bill  Details ")) {
-            new BillDetails (meter);  
+        } else if (msg.equals("Bill Details")) {
+            new BillDetails(meter); 
         }  else if (msg.equals("Notepad")) {
             try {
                 Runtime.getRuntime().exec("notepad.exe");
@@ -233,7 +233,7 @@ public class Project extends JFrame implements ActionListener{
            setVisible(false);
            new Login();
         } else if (msg.equals("Pay Bill")) {
-            new PayBill(meter); 
+            new PayBill(meter);
         }
     }
     
