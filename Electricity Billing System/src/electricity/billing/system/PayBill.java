@@ -111,21 +111,17 @@ public class PayBill extends JFrame implements ActionListener{
             e.printStackTrace();
         }
         
-        cmonth.addItemListener(new ItemListener(){
+         cmonth.addItemListener(new ItemListener(){
             @Override
-            public void itemStateChanged(ItemEvent ae){
-                  
-        try{
-            Conn c = new Conn();
-         
-            
-            ResultSet rs = c.s.executeQuery("select * from bill where meter_no = '"+meter+"' AND month = '"+cmonth.getSelectedItem()+"'");
+            public void itemStateChanged(ItemEvent ae) {
+                try {
+                    Conn c = new Conn();
+                    ResultSet rs = c.s.executeQuery("select * from bill where meter_no = '"+meter+"' AND month = '"+cmonth.getSelectedItem()+"'");
                     while(rs.next()) {
                         labelunits.setText(rs.getString("units"));
                         labeltotalbill.setText(rs.getString("totalbill"));
                         labelstatus.setText(rs.getString("status"));
-                
-            }
+                    }
             
             
         } catch(Exception e){
