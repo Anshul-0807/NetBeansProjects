@@ -111,7 +111,7 @@ public class PayBill extends JFrame implements ActionListener{
             e.printStackTrace();
         }
         
-         cmonth.addItemListener(new ItemListener(){
+        cmonth.addItemListener(new ItemListener(){
             @Override
             public void itemStateChanged(ItemEvent ae) {
                 try {
@@ -122,11 +122,9 @@ public class PayBill extends JFrame implements ActionListener{
                         labeltotalbill.setText(rs.getString("totalbill"));
                         labelstatus.setText(rs.getString("status"));
                     }
-            
-            
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         
